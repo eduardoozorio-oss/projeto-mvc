@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <h1>Entrar no sistema</h1>
+
+    <from action="/auth/login" method="post ">
+        E-maill: <input type="email" name="email" required>
+        <br><br>
+        Senha: <input type="passaword" name="senha_hash" >
+        <br>
+
+        {% if erro %}
+            <p style="color: red;">{{erro}}<p> 
+        {% endif %}
+        <button type="submit">Entrar</button>
+    </from>
+
+
+    <p> já tem conta? <a href="/auth/login">cadastre-se</a></p>
+</body>
+</html>

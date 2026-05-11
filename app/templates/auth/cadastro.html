@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro</title>
+</head>
+<body>
+    <h1>criar conta</h1>
+
+    <from action="/auth/cadastro" method="post ">
+        Nome: <input trype="texte" name="nome">
+        <br>
+        E-maill: <input type="email" name="email" required>
+        <br>
+        Senha: <input type="passaword" name="senha_hash" >
+        <br>
+
+        {% if erro %}
+            <p style="color: red;">{{erro}}<p> 
+        {% endif %}
+        <button type="submit">cadastrar</button>
+    </from>
+
+
+    <p> já temconta? <a href="/auth/login">Entrar</a></p>
+</body>
+</html>
