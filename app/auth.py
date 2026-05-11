@@ -1,7 +1,3 @@
-# 1. Hash e verificação de senhas com bcrypt
-#
-#
-
 from datetime import datetime, timedelta, timezone
 from jose import JWTError, jwt
 from passlib.context import CryptContext
@@ -47,4 +43,28 @@ def decodificar_token(token: str):
     payload = jwt.encode(token, SECRET_KEY, algorithm=[ALGORITHM])
     return payload
 
+#dependencias do FastAPI
+def get_usuario_logado(request: Request):
+    token = request.cookies.get("access_token")
+    if not token:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token não fornecido")
+    try:
+        payload = decodificar_token(token)
+        email = payload.get("sub")
+        if email is None:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
+        return email
+    except JWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
 
+def get_usuario_opcional(request: Request):
+    try:
+        return get_usuario_logado(request)
+    except HTTPException:
+        return None
+    
+def get_usuario_opcional(request: Request):
+    try:
+        return get_usuario_logado(request)
+    except HTTPException:
+        return None
