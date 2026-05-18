@@ -89,3 +89,19 @@ def get_usuario_opcional(request: Request):
         return get_usuario_logado(request)
     except HTTPException:
         return None
+    
+
+
+def get_admin(request: Request):
+    usuario = get_usuario_logado(request)
+
+
+    if usuario.get("role") != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Acesso apenas para administradores"
+
+
+        )
+    else:
+        return usuario
