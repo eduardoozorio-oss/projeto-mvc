@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Estoque</title>
+    <style>
+        /* Configurações Globais e Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Card Central */
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 400px;
+            border-top: 5px solid #dc3545; /* Detalhe em vermelho no topo */
+            margin: 20px;
+        }
+
+        /* Boas-vindas */
+        h1 {
+            color: #212529;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        h1 span {
+            color: #dc3545; /* Destaca o nome do usuário em vermelho */
+        }
+
+        /* Perfil / Role */
+        .profile-info {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background-color: #fff5f5;
+            color: #dc3545;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: 1px solid rgba(220, 53, 69, 0.2);
+            text-transform: uppercase;
+        }
+
+        /* Botão de Sair */
+        .btn-logout {
+            display: block;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: #dc3545;
+            color: #ffffff;
+            border: 2px solid #dc3545;
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background-color: #bd2130;
+            border-color: #bd2130;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Olá, <span>{{ usuario.none }}</span></h1>
+        
+        <div class="profile-info">
+            Perfil: <span class="badge">{{ usuario.role }}</span>
+        </div>
+
+        <a href="auth/logout" class="btn-logout">Sair</a>
+    </div>
+
+</body>
+</html>
